@@ -32,6 +32,7 @@ cap.on('keyup',function(){
 	checkCap();
 	checkIndirizzo();});
 
+// Funzione per validare la registrazione
 function Validate(){
 	if(checkUsername() && checkNome() && checkCognome && checkPassword() && checkConfirmPassword() && checkData() && checkIndirizzo() )
 		return true;
