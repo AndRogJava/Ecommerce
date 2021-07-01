@@ -20,7 +20,7 @@ cognome.on('keyup',function(){
 	checkCognome();});
 confPassword.on('keyup',function(){
 	checkConfirmPassword();});
-dataNascita.on('keydown keyup mousedown mouseup',function(){
+dataNascita.on('keydown keyup mousedown mouseup blur',function(){
 	checkData();});
 via.on('keyup',function(){
 	checkIndirizzo();});
