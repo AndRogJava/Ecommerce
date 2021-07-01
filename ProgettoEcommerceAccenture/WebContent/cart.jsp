@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Carrello</title>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/cart.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -21,163 +21,93 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <jsp:include page="navbar.jsp" />
-<body style="background-color:#E3981C">
+<body style="background-color:#FFF">
 	
 	<% HashMap<IndirizzoBean,ArrayList<ProdottoBean>> lista = (HashMap<IndirizzoBean,ArrayList<ProdottoBean>>) session.getAttribute("lista");%>
-	<div style="text-align:center;">
-	<c:forEach var="entry" items="${lista}">
-		<p>L'ordine sarà spedito presso:</p>
-		Via: <c:out value="${entry.key.via}"/>
-		Numero: <c:out value="${entry.key.numero}"/>
-		Citta: <c:out value="${entry.key.citta}"/>
-		Cap: <c:out value="${entry.key.cap}"/>
-			
-	</c:forEach>
-	
-	
-	
 
     <!-- Cart -->
-    <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="col-lg-12 col-sm-12">
-            <span class="title">SHOPPING CART</span>
-        </div>
-        <div class="col-lg-12 col-sm-12 hero-feature">
-            <div class="table-responsive">
-                <table class="table table-bordered tbl-cart">
-                    <thead>
-                        <tr>
-                            <td class="hidden-xs">Image</td>
-                            <td>Nome prodotto</td>
-                            <td>Qta</td>
-                            <td>Prezzo</td>
-                            <td>Remove</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach var="entry" items="${lista}">
-							<c:forEach var="prodotto" items="${entry.value}">
-								
-								<tr>
-								<td class="hidden-xs">
-									<a href="#">
-                                    <img src="https://via.placeholder.com/200x200/" alt="#" title="" width="47" height="47">
-                                	</a>
-								</td>
-								<td><c:out value="${prodotto.nome}"/></td>
-								<td><div class="input-group bootstrap-touchspin">
-									<span class="input-group-btn">
-										<button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="removeQuantity(${prodotto.idProdotto},this)">-</button>
-									</span>
-									<span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-									<input type="text" name="" value="<c:out value="${prodotto.quantitaDisponibile}"/>" class="input-qty form-control text-center" style="display: block;">
-									<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
-									<span class="input-group-btn">
-										<button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="addQuantity(${prodotto.idProdotto},this)">+</button>
-									</span>
-									<!-- </div><c:out value="${prodotto.quantitaDisponibile}"/> -->
-									</div>
-								</td>
-								<td class="price"><c:out value="${prodotto.prezzo}"/></td>
-								<td>
-									<a href="#" class="remove_cart" rel="2"><i class="fa fa-trash-o"></i></a>
-								</td>
-								</tr>
-						</c:forEach>	
-					</c:forEach>
-                    	<!--<c:forEach var="entry" items="${lista}">
-						<tr>
-							<td><c:out value="${prodotto.nome}"/></td>
-							<td>${employee[1]}</td>
-							<td align="center">${employee[2]}</td>
-							<td align="center">${employee[3]}</td>
-						</tr>
-						</c:forEach>
-                        	<tr>
-                            <td class="hidden-xs">
-                                <a href="#">
-                                    <img src="https://via.placeholder.com/200x200/" alt="#" title="" width="47" height="47">
-                                </a>
-                            </td>
-                            <td><a href="#">Age Of Wisdom Tan Graphic Tee</a>
-                            </td>
-                            <td>
-                                <select name="">
-                                    <option value="" selected="selected">S</option>
-                                    <option value="">M</option>
-                                </select>
-                            </td>
-                      
-                            <td>
-                                <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" name="" value="1" class="input-qty form-control text-center" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
-                            </td>
-                            <td class="price">$ 122.21</td>
-                            <td>$ 122.21</td>
-                            <td class="text-center">
-                                <a href="#" class="remove_cart" rel="2">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="hidden-xs">
-                                <a href="#">
-                                    <img src="https://via.placeholder.com/200x200/" alt="Adidas Men Red Printed T-shirt" title="" width="47" height="47">
-                                </a>
-                            </td>
-                            <td><a href="#">Adidas Men Red Printed T-shirt</a>
-                            </td>
-                            <td>
-                                <select name="">
-                                    <option value="">S</option>
-                                    <option value="" selected="selected">M</option>
-                                </select>
-                            </td>
-                
-                            <td>
-                                <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" name="" value="2" class="input-qty form-control text-center" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
-                            </td>
-                            <td class="price">$ 20.63</td>
-                            <td>$ 41.26</td>
-                            <td class="text-center">
-                                <a href="#" class="remove_cart" rel="1">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" align="right">Total</td>
-                            <td class="total" colspan="2"><b>$ 163.47</b>
-                            </td>
-                        </tr> -->
-                    </tbody>
-                </table>
-               </div>
-            <div class="btn-group btns-cart">
-                <button type="button" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</button>
-                <button type="button" class="btn btn-primary">Update Cart</button>
-                <button type="button" class="btn btn-primary" onclick="checkout()">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-            </div>
-    </div>
-    <!-- End Cart -->
-    <p>Inserire, se l'indirizzo di default non è ritenuto adatto, il nuovo indirizzo di spedizione</p>
-                <div class="inputfield">
-			      <label>Via</label>
-			      <input id="via" name="via" type="text" class="input" required>
-			      <label style="margin-left: 10px">Numero</label>
-			      <input id="numero" name="numero" type="text" class="input" required>
-			    </div>
-			    <div class="inputfield">
-			      <label>Citta'</label>
-			      <input id="citta" name="citta" type="text" class="input" required>
-			      <label style="margin-left: 10px">CAP</label>
-			      <input id="cap" name="cap" type="number" class="input" required>
-			    </div>
-			    <div id="errorIndirizzo" class="hideDiv alert alert-danger" role="alert">
+    <div class="col-md-12">
+    	<h1 class="text-center"><span class="title">Carrello</span></h1>
+		<div class="col-md-8 hero-feature">
+			<c:forEach var="entry" items="${lista}">
+				<c:forEach var="prodotto" items="${entry.value}">
+					<div class="card cardProduct">
+						<div class="row no-gutters">
+					    	<div class="col-md-4">
+					    		<img src="${prodotto.url}" class="card-img img-responsive" alt="..." width=100 height=100>
+					    	</div>
+						    <div class="col-md-8">
+						    	<div class="card-body">
+						        	<h3 class="card-title" style="display: inline">${prodotto.nome}</h3>
+						        	<h2 style="display: inline; float:right; margin-right:10px">${prodotto.prezzo}€</h2>
+						        	<p class="card-text" style="color:#707070">${prodotto.descrizione}</p>
+						        	
+						        	<div class="input-group">
+							        	<span class="input-group-btn">
+							            	<button type="button" class="btn btn-default bootstrap-touchspin-down" onclick="removeQuantity(${prodotto.idProdotto},this)">
+							                	<span class="glyphicon glyphicon-minus"></span>
+							                </button>
+							            </span>    
+							            <input type="text" name="" value="<c:out value="${prodotto.quantitaDisponibile}"/>" class="form-control input-number input-qty">
+							            <span class="input-group-btn">
+							            	<button type="button" class="btn btn-default btn-number" onclick="addQuantity(${prodotto.idProdotto},this)">
+							                	<span class="glyphicon glyphicon-plus"></span>
+							                </button>
+							            </span>
+							        </div>
+						        	
+						        	<button class="btn btn-danger remove_cart" onclick="removeProduct(${prodotto.idProdotto})" rel="2"><i class="fa fa-trash-o" style="margin-right:5px"></i>Rimuovi</button>
+						      	</div>
+						    </div>
+						</div>
+					</div>
+				</c:forEach>	
+			</c:forEach>
+    	</div>
+    	
+    	<div class="col-md-4 cardAddress text-center" style="background-color: #dafaff">
+    		<h3 class=""><span class="title">Indirizzo di spedizione</span></h3>
+    		<div class="orderAddress">
+				<c:forEach var="entry" items="${lista}">
+					<b>L'ordine sarà spedito presso:</b>
+					<p>
+						via <label id="viaLabel"><c:out value="${entry.key.via}"/></label>, <label id="numLabel"><c:out value="${entry.key.numero}"/></label> - 
+						<label id="cittaLabel"><c:out value="${entry.key.citta}"/></label> (<label id="capLabel"><c:out value="${entry.key.cap}"/></label>)
+					</p>
+				</c:forEach>
+				<div class="text-center" style="display:none">
+					<button class="btn btn-primary" onclick="showNewAddress()">Modifica indirizzo</button>
 				</div>
-            </div>
-</div>
-<jsp:include page="footer.jsp" />
+			</div>
+				
+			<div class="newAddress">
+			    <b style="margin-top:20px">Nuovo indirizzo di spedizione</b>
+			    <div class="form-group text-center" style="margin-top: 15px">
+					<input id="via" name="via" type="text" class="form-control" placeholder="Via" required>
+					<input id="numero" name="numero" type="text" class="form-control" placeholder="Numero" required>
+					<input id="citta" name="citta" type="text" class="form-control" placeholder="Città" required>
+					<input id="cap" name="cap" type="number" class="form-control" placeholder="CAP" required>
+				</div>
+				<div class="text-center">
+					<button class="btn btn-primary" onclick="showOldAddress()">Usa indirizzo precedente</button>
+				</div>
+				<div id="errorIndirizzo" class="hideDiv alert alert-danger" role="alert" style="display:none"></div>
+			</div>
+    	</div>
+    </div>
+    
+    <div class="text-center">
+    	<div class="btn-group btns-cart">
+        	<button type="button"  onclick="location.href='index.jsp'" class="btn btn-primary"><i class="fa fa-arrow-circle-left" style="margin-right:5px"></i>Continua shopping</button>
+          	<button type="button" class="btn btn-primary">Aggiorna carrello</button>
+          	<button type="button" class="btn btn-primary" onclick="checkout()">Checkout<i class="fa fa-arrow-circle-right" style="margin-left:5px"></i></button>
+      	</div>
+    </div>
+   
+   	<div id="footer">
+   		<jsp:include page="footer.jsp" />
+   	</div>
 </body>
+<script src="js/cart.js"></script>
 <script src="js/ordine.js"></script>
 </html>

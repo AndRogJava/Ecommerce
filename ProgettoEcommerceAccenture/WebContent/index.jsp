@@ -125,5 +125,6 @@
 </body>
 
 <script src= "js/index.js"></script>
+<script src= "js/ordine.js"></script>
 
 </html>

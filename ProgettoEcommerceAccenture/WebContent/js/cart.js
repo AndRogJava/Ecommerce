@@ -42,6 +42,12 @@ function aggiungiCarrello(id, prezzo, thiss){
 var totale = 0;
 
 function aggiornaCarrello(qta){
+	var oldQta = sessionStorage.getItem("qtaTot");
+	console.log("oldQta: " + oldQta);
+	
+	console.log("newQta: " + (oldQta+qta));
+	
+	
 	qta = parseInt(qta);
 	console.log(qta);
 	totale += qta;
@@ -55,11 +61,6 @@ function creaCarrello(){
 
 function sendCart(thiss){
 	creaCarrello();
-	var url = 'CartServlet';
-	/*var xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost:9910/mymagic/mymagic");
-	xhr.setRequestHeader("content-type", "application/json");
-	xhr.send(sessionStorage.getItem("shoppingCart"));*/
 	
 	$.ajax({
 		url: "CartServlet",
@@ -79,6 +80,7 @@ function sendCart(thiss){
 
 function loadCart(){
 	listaProdotti = JSON.parse(sessionStorage.getItem("shoppingCart"));
+	
 }
 
 if(sessionStorage.getItem("shoppingCart") != null){

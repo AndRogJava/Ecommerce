@@ -164,3 +164,65 @@ body{margin-top:20px;}
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+.form-group input {
+	margin-bottom: 5px;
+}
+
+#footer {
+	margin-top: 25px;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.center {
+	margin: auto;
+  	width: 50%;
+}
+
+.cardProduct {
+	border-radius: 10px;
+	border: 1px solid #707070;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.cardProduct img {
+	position: relative;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* CARD ADDRESS */
+.cardAddress {
+	border-radius: 10px;
+	border: 1px solid #707070;
+	padding: 15px;
+}
+
+.cardAddress h3{
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+.orderAddress button {
+	margin-bottom: 15px;
+}
+
+.newAddress {
+	display:none;
+}
+
+.newAddress button {
+	margin-bottom: 15px;
+}
+
+.remove_cart {
+	margin-top: 15px;
+}
+

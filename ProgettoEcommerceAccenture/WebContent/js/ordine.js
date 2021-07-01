@@ -1,4 +1,5 @@
 var listaProdotti = [];
+var newAddress = false;
 
 
 function aggiungiCarrello(id, prezzo, thiss){
@@ -31,7 +32,7 @@ function creaCarrello(){
 	sessionStorage.setItem("shoppingCart",JSON.stringify(listaProdotti));
 }
 
-function sendCart(thiss){
+function sendCart(){
 	creaCarrello();
 	var url = 'CartServlet';
 	/*var xhr = new XMLHttpRequest();
@@ -58,6 +59,7 @@ function sendCart(thiss){
 function loadCart(){
 	listaProdotti = JSON.parse(sessionStorage.getItem("shoppingCart"));
 }
+
 function addQuantity(id,thiss){
 	$.each(listaProdotti, function(i,prodotto){
 		if(prodotto.idProdotto == id){
@@ -77,7 +79,9 @@ function removeQuantity(id,thiss){
 		}
 	});
 }
+
 function checkout(){
+	
 	var indirizzo = new Object();
 	//indirizzo.id= $("#idIndirizzo").val();
 	var json={
@@ -89,10 +93,19 @@ function checkout(){
 	$.each(listaProdotti,function(i,prodotto){
 		json.products.push({"id" : prodotto.idProdotto, "quantity": prodotto.quantita});
 	})
-	json.address["via"] = $("#via").val();
-	json.address["numero"] = $("#numero").val();
-	json.address["citta"] = $("#citta").val();
-	json.address["cap"] = $("#cap").val();
+	
+	if(newAddress == true) {
+		json.address["via"] = $("#via").val();
+		json.address["numero"] = $("#numero").val();
+		json.address["citta"] = $("#citta").val();
+		json.address["cap"] = $("#cap").val();
+	}
+	else {
+		json.address["via"] = $("#viaLabel").html();
+		json.address["numero"] = $("#numLabel").html();
+		json.address["citta"] =  $("#cittaLabel").html();
+		json.address["cap"] = $("#capLabel").html();	
+	}
 	/*indirizzo.via = $("#via").val();
 	indirizzo.numero = $("#numero").val();
 	indirizzo.citta= $("#citta").val();
@@ -111,19 +124,51 @@ function checkout(){
 	    mimeType: 'application/json',
 	    success:function(data){
 	    	alert("Ordine effettuato con successo!");
+			sessionStorage.clear();
+			listaProdotti = [];
+			window.location = "index.jsp";
 		}
 	});	
 }
 function removeProduct(id){
+	console.log(id);
+	
+	listaProdotti = JSON.parse(sessionStorage.getItem("shoppingCart"));
+	
+	var qtaDel;
+	var listaProdottiTemp = [];
+	for(i = 0; i < listaProdotti.length; i++) {
+		if(listaProdotti[i].idProdotto != id) {
+			console.log(listaProdotti[i]);
+			listaProdottiTemp.push(listaProdotti[i]);
+		}
+		else {
+			qtaDel = listaProdotti[i].quantita;
+		}
+	}
+
+
+	listaProdotti = listaProdottiTemp;
+	console.log(listaProdotti);
+	console.log(qtaDel);
+	
+	sessionStorage.setItem("shoppingCart",JSON.stringify(listaProdotti));
+	var oldQta = sessionStorage.getItem("qtaTot");
+	sessionStorage.setItem("qtaTot", oldQta - qtaDel);
+	
+	sendCart();
+	
+	/*
 	$.each(listaProdotti,function(i,prodotto){
 		if(prodotto.idProdotto == id){
 			for(a= i,b=i+1; b< listaProdotti.length;a++){
-				listaProdotti[a]=listProdotti[b];
+				listaProdotti[a]=listaProdotti[b];
 			}
 			listaProdotti[listaProdotti.length-1]=null;		
 		}
-	});
+	});*/
 }
+
 if(sessionStorage.getItem("shoppingCart") != null){
 	loadCart();
 }
@@ -131,5 +176,15 @@ if(sessionStorage.getItem("shoppingCart") != null){
 if(sessionStorage.getItem("qtaTot") != null){
 	//sessionStorage.removeItem("qtaTot");
 	document.querySelector('.cart span').textContent = "(" + sessionStorage.getItem("qtaTot") + ")";
+}
+
+function showNewAddress() {
+	$(".orderAddress").hide();
+	$(".newAddress").show();
+}
+
+function showOldAddress() {
+	$(".orderAddress").show();
+	$(".newAddress").hide();
 }
 

@@ -156,15 +156,15 @@ public class ProdottoDaoImpl implements IProdottoDao{
 				prodotto.setPrezzo(resultSet.getDouble(2));
 				prodotto.setQuantitaDisponibile(resultSet.getInt(3));
 				prodotto.setNome(resultSet.getString(4));
-				if (resultSet.getDate(5)==null) {
+				if (resultSet.getString(5)==null) {
 					prodotto.setDescrizione(null);
 				}else {
 					prodotto.setDescrizione(resultSet.getString(5));
 				}
-				if (resultSet.getDate(6)==null) {
+				if (resultSet.getString(6)==null) {
 					prodotto.setUrl(null);
 				}else {
-					prodotto.setUrl(resultSet.getString(5));
+					prodotto.setUrl(resultSet.getString(6));
 				}
 			}
 		}catch (SQLException e){
@@ -192,6 +192,9 @@ public class ProdottoDaoImpl implements IProdottoDao{
 				prodottoAppoggio.setPrezzo(resultSet.getDouble(2));
 				prodottoAppoggio.setQuantitaDisponibile(resultSet.getInt(3));
 				prodottoAppoggio.setNome(resultSet.getString(4));
+				
+				System.out.println(resultSet.getString(5) + " " + resultSet.getString(6));
+				
 				if (resultSet.getString(5)==null) {
 					prodottoAppoggio.setDescrizione(null);
 				}else {
@@ -200,8 +203,9 @@ public class ProdottoDaoImpl implements IProdottoDao{
 				if (resultSet.getString(6)==null) {
 					prodottoAppoggio.setUrl(null);
 				}else {
-					prodottoAppoggio.setUrl(resultSet.getString(5));
+					prodottoAppoggio.setUrl(resultSet.getString(6));
 				}
+				
 				listaProdotti.add(prodottoAppoggio);
 			}
 		}catch (SQLException e){
