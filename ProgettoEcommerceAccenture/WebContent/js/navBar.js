@@ -1,42 +1,15 @@
-/**
- * 
- */
+/*
 
-function setAttribute(id, value, typeAttribute) {
-	const el = document.getElementById(id);
-	classAttribute = document.createAttribute(typeAttribute);
-	classAttribute.value = value;
-	el.setAttributeNode(classAttribute);
-}
+funzioni per formattare la i pulsanti sulla navbar a seconda dell'indirizzo
+url richiesto dall' utente.
 
-function setColor(ids, correctId) {
-	ids.forEach(element => {
-		if (element != correctId) {
-			document.getElementById(element).style.color = 'black';
-		} else if (element == correctId) {
-			document.getElementById(element).style.color = 'white';
-		}	
-	})
-}
+*/
 
-function setBarMenu(num) {
-	setAttribute('l' + num,'active','class');
-	setColor(['a1','a2','a3','a4','a5'], 'a' + num);
-}
-
-function setActive() {
-	switch(window.location.pathname.split(`/`)[2]) {
-		case 'index.jsp':
-		case '':
-			setBarMenu('1'); break;
-		case 'listaprodotti.jsp':
-			setBarMenu('2'); break;
-		case 'offerte.jsp':
-			setBarMenu('3'); break;
-		case 'categorie.jsp':
-			setBarMenu('4'); break;
-		case 'contatti.jsp':
-			setBarMenu('5'); break;
-	}
-
+function setNavBar() {
+	const url = window.location.pathname.split(`/`)[2]; //ottengo porzione url dopo il secondo "/"
+	let finalUrl= url.substr(0, url.indexOf('/'));  //taglio la stringa ottenuta al terzo "/"
+	if (finalUrl == "") finalUrl = url; //se la stringa ottenuta dopo il taglio e' vuota allora riprendo la stringa precedente
+	//trovo il tag <a> corrispondente all'url scelto dall'utente e lo formatto.
+	$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+	$('ul.nav a[href="'+ url +'"]').css('color', 'white');
 }
