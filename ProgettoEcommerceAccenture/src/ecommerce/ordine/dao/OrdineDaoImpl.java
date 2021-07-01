@@ -42,6 +42,7 @@ public class OrdineDaoImpl implements IOrdineDao {
 		
 		String query = "insert into ordine values (?,?,?,?,?)";
 		conn = ConnectionFactory.getIstance().getConnection();
+		ordine.setIdOrdine(getSequence());
 		int i=0;
 		try {
 			preparedStatement = conn.prepareStatement(query);
