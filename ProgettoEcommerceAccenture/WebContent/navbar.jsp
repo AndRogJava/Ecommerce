@@ -51,7 +51,7 @@
 </div> -->
 
 <% String user = (String) session.getAttribute("user"); %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/navBar.js"></script>
 
 <nav class="navbar navbar-inverse">
@@ -68,10 +68,10 @@
     <!-- class="active" -->
       <ul class="nav navbar-nav">
         <li id="l1"><a id="a1" href="index.jsp" style="color: black">Home</a></li>
-        <li id="l2"><a id="a2" href="listaprodotti.jsp">Prodotti</a></li>
-        <li id="l3"><a id="a3" href="offerte.jsp">Offerte</a></li>
-        <li id="l4"><a id="a4" href="categorie.jsp">Categorie</a></li>
-        <li id="l5"><a id="a5" href="contatti.jsp">Contatti</a></li>
+        <li id="l2"><a id="a2" href="Prodotto" style="color: black">Prodotti</a></li>
+        <li id="l3"><a id="a3" href="offerte.jsp" style="color: black">Offerte</a></li>
+        <li id="l4"><a id="a4" href="categorie.jsp" style="color: black">Categorie</a></li>
+        <li id="l5"><a id="a5" href="contatti.jsp" style="color: black">Contatti</a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@
     </div>
   </div>
 </nav>
-<script>setActive()</script>
+<script>setNavBar()</script>
 <!--
 <div class="container">
   <div class="row">
