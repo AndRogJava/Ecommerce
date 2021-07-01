@@ -2,6 +2,7 @@ package ecommerce.registration.controller;
 import ecommerce.user.model.*;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,12 +52,13 @@ public class RegistrationServlet extends HttpServlet {
 		utente.setNome(request.getParameter("nome"));
 		utente.setCognome(request.getParameter("cognome"));
 		String confirmPassword = request.getParameter("confirmPassword");
+		//data di nascita nel futuro (compreso oggi) e prima del 01/01/1900 non viene memorizzata in DB
 		if(!request.getParameter("dataNascita").equals("") && request.getParameter("dataNascita") != null ) {
 			if(DateValidator.validator(request.getParameter("dataNascita"))) { 
 				utente.setDataNascita(LocalDate.parse(request.getParameter("dataNascita")));
 				data=true;
 			}
-			data=true;
+			//data=true;
 		}
 		
 		UserService us = new UserService();
@@ -85,7 +87,7 @@ public class RegistrationServlet extends HttpServlet {
 			}else {
 				logger.error("username gia presente");
 				rd= request.getRequestDispatcher("registration.jsp");
-				request.setAttribute("msg", "Impossibile registrare, username già presente nel sito.");
+				request.setAttribute("msg", "Impossibile registrare, username già  presente nel sito.");
 				rd.forward(request, response);
 			}
 		}else {
