@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <link rel="stylesheet" href="css/footerStyle.css">
-
+	 <link rel="stylesheet" href="css/socialNavbar.css">
 <!-- FOOTER -->
 
 
@@ -12,7 +12,32 @@
 		<div class="voice">Servizio clienti: <b>02345678</b></div>
 		<div class="voice">email: <b>articoli@gmail.com</b></div><br>
 		<a id="a5" href="contatti.jsp"><div class="link">Click for other contacts</div></a>
+		<div>
+			<ul1> 
+			    <li1>
+			      <a href="#"><span></span><span></span><span></span><span></span>
+			        <span class="fa fa-facebook"></span>
+			      </a> 
+			    </li1>
+			    <li1>
+			      <a href="#"><span></span><span></span><span></span><span></span>
+			        <span class="fa fa-twitter"></span>
+			      </a> 
+			    </li1>
+			    <li1>
+				    <a href="#"><span></span><span></span><span></span><span></span>
+				    	<span class="fa fa-instagram"></span>
+				    </a> 
+			    </li1>
+			    <li1>
+				    <a href="#"><span></span><span></span><span></span><span></span>
+				    	<span class="fa fa-linkedin"></span>
+				    </a> 
+			    </li1>
+		  	</ul1>  
+		 </div>
 	</div>
+	
 	<div class="sectionRight">
 		<h4>Links</h4>
 		<hr>

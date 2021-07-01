@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <link rel="stylesheet" href="css/socialNavbar.css">
 <!-- <!DOCTYPE html>
   <html lang="en">
 <head>
@@ -54,11 +55,7 @@
 <nav class="navbar navbar-dark" style="background-color: #00ffc4ad;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      
         <a class="navbar-brand" href="index.jsp">
         	<img src="./img/etsy.png" alt="logo" width="32" height="32" style="margin-left: 20px; margin-top: -7px">
         </a>
@@ -67,7 +64,11 @@
     <!-- class="active" -->
       <ul class="nav navbar-nav">
         <li id="l1"><a id="a1" href="index.jsp" style="color: black">Home</a></li>
-        <li id="l2" style="margin-left: 390px;"><a id="a2" href="Prodotto" style="color: black">Prodotti</a></li>
+        <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+   		<li><a href="#"> <span class="fa fa-twitter"></span></a> </li>
+   		<li><a href="#"><span class="fa fa-instagram"></span></a></li>
+   		<li><a href="#"><span class="fa fa-linkedin"></span> </a></li>
+        <li id="l2" style="margin-left: 100px;"><a id="a2" href="Prodotto" style="color: black">Prodotti</a></li>
         <li id="l3"><a id="a3" href="offerte.jsp" style="color: black">Offerte</a></li>
         <li id="l4"><a id="a4" href="categorie.jsp" style="color: black">Categorie</a></li>
         <li id="l5"><a id="a5" href="contatti.jsp" style="color: black">Contatti</a></li>
