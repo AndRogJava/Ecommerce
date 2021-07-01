@@ -2,7 +2,7 @@
 
 .containerFooter {
 	color: black;
-	background: linear-gradient( #1f3247, #b9b9b9);
+	background-image: linear-gradient(to right,  #404861, #858080 );
 	font-family: 'Roboto', sans-serif;
 	display:inline-block;
 	width: 100%;
