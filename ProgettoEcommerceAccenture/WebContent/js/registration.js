@@ -20,7 +20,7 @@ cognome.on('keyup',function(){
 	checkCognome();});
 confPassword.on('keyup',function(){
 	checkConfirmPassword();});
-dataNascita.on('keyup',function(){
+dataNascita.on('keydown keyup mousedown mouseup blur',function(){
 	checkData();});
 via.on('keyup',function(){
 	checkIndirizzo();});
@@ -101,12 +101,14 @@ function checkConfirmPassword(){
 
 function upData(){
 	var toDay = new Date();
-	var toDayDate = toDay.getFullYear()+'/'+(toDay.getMonth()+1)+'/'+toDay.getDate();
+	var toDayDate = toDay.getFullYear()+'-'+(toDay.getMonth()+1)+'-'+toDay.getDate();
 	return toDayDate;
 }
 
+/* corretta parse della data */
 function checkData(){
-	if(dataNascita.val() != "" && dataNascita.val() > "1900/01/01" && dataNascita.val() < upData()){
+	var date = Date.parse(dataNascita.val());
+	if(dataNascita.val() != "" && date > Date.parse("1900-01-01") && date < Date.parse(upData())){
 		$("#errorDataNascita").html("");
 		$("#errorDataNascita").addClass("hideDiv");
 		return true;
@@ -180,7 +182,3 @@ function checkCap() {
 		return false;
 	}
 }
-
-
-
-

@@ -1,7 +1,7 @@
 /*var username = document.forms[""]["username"];
 var password = document.forms[""]["password"];*/
 
-var regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{8,16}/;
+var regex = /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,16}/;
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 
@@ -46,7 +46,7 @@ function passVerify() {
 		  return false;
 	  }else if(!password.value.match(regex)){
 		  password.style.border = "1px solid red";
-		  password_error.innerHTML = "La password deve contenere almeno: una lettera minuscola, maiuscola, un numero";
+		  password_error.innerHTML = "La password deve contenere almeno: una lettera minuscola, maiuscola, un numero, un carattere speciale";
 		  password.focus();
 		  return false;
 	  }else{
@@ -72,7 +72,7 @@ function verify(){
 	
 	if(!password.value.match(regex)){
 		  password.style.border = "1px solid red";
-		  document.getElementById("passError").innerHTML = "La password deve contenere almeno: una lettera minuscola, maiuscola, un numero";
+		  document.getElementById("passError").innerHTML = "La password deve contenere almeno: una lettera minuscola, maiuscola, un numero, un carattere speciale";
 		  password.focus();
 		  return false;
 	  }else{

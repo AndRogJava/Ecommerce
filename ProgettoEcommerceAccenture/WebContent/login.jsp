@@ -3,27 +3,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="css/login.css">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <title>Sign in</title>
-</head>
-<body>
+  <head>
+    <!-- File CSS -->
+    <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<div class="main" style="height:500px">
-  <p class="sign" align="center">Sign in</p>
-  <form class="form1" action="LoginServlet" id="formLogin" method="post" onsubmit="return verify()">
-    <input id="username" name="username" class="un " type="text" style="align:center" placeholder="Username">
-    <p style="text-align:center; color:red"><span id="userError"></span></p>
-    <input id="password" name="password" class="pass" type="password" style="align:center" placeholder="Password">
-    <p style="text-align:center; color:red"><span id="passError"></span></p>
-    <button type = "submit" class="submit" form="formLogin" style="align:center">Sign in</button>
-    <p class="forgot" align="center"><a href="registration.jsp" style="color: #E3981C">Registrati</a></p>
-  </form>
-  <p align="left"> <c:out value="${msg}" /> </p>
-</div>
-</body>
-<script src="js/login.js"></script>
+    <title>Sign in</title>
+  </head>
+  <body>
+
+    <div class="d-flex bg_grad flex-column justify-content-center align-items-center">
+      <div class="login_container">
+      
+        <form class="text-center" action="LoginServlet" id="formLogin" method="post" onsubmit="return verify()">
+          
+          <div class="input_container d-flex w-100">
+            <i class="far fa-user icon d-flex align-items-center justify-content-center"></i>
+            <input id="username" name="username" type="text" placeholder="Username">
+          </div>
+          <p class="text-center text-danger mt-1"><span id="userError"></span></p>
+          
+          <div class="input_container d-flex w-100">
+            <i class="fas fa-key icon d-flex align-items-center justify-content-center"></i>
+            <input id="password" name="password" type="password" placeholder="Password">
+          </div>
+          <p class="text-center text-danger mt-1"><span id="passError"></span></p>
+          
+          <button type = "submit" class="submit text-uppercase" form="formLogin" >Login</button>
+        </form>
+        <p class="text-center text-danger mt-1"> <c:out value="${msg}" /> </p>
+      </div>
+      <p class="forgot text-center mt-4"><a href="registration.jsp" style="color: #06D4B9">Registrati</a></p>
+    </div>
+
+    <!-- File JS -->
+    <script src="js/login.js"></script>
+  </body>
 </html>
