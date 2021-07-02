@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.forward(request, response);	
+		rd.forward(request, response);
 	}
 
 	/**
@@ -84,7 +84,6 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
-
 	}
 
 }

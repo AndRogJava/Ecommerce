@@ -48,6 +48,9 @@ public class OrdineService {
 	public ArrayList<OrdineBean> getAllOrdini(){
 		return ordineDaoImpl.getAllOrdini();
 	}
+	public ArrayList<OrdineBean> getAllOrdiniByUser(String user){
+		return ordineDaoImpl.getAllOrdiniByUser(user);
+	}
 	public boolean addDettaglio(DettaglioBean dettaglio) {
 		return dettaglioDaoImpl.addDettaglio(dettaglio);
 	}

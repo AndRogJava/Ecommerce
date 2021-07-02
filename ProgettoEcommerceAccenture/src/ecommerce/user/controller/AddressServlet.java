@@ -13,35 +13,27 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ecommerce.user.model.*;
 import ecommerce.user.service.AddressService;
-/**
- * Servlet implementation class AddressServlet
- */
+import ecommerce.user.service.UserService;
+
 @WebServlet("/AddressServlet")
 public class AddressServlet extends HttpServlet {
 	private static final Logger logger = LogManager.getLogger(AddressServlet.class);
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddressServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		AddressService addressService = new AddressService();
+		String user = request.getParameter("user");
+		IndirizzoBean indirizzoBean = addressService.getUltimoIndirizzoByUser(user);
+
+		ObjectMapper mapper = new ObjectMapper();
+		response.setContentType("application/json");
+		mapper.writeValue(response.getOutputStream(), indirizzoBean);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger.info("do post address servlet");
 		

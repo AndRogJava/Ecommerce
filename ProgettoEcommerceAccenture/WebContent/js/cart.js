@@ -22,6 +22,34 @@ function cartNumbers(){
 
 var listaProdotti = [];
 
+$(function() {
+	
+	console.log("CIAOOOO");
+	
+	loadCart();
+	var prezzoTotale;
+	
+	$(listaProdotti).each(function(prodotto) {
+		var qta = $("#qta_"+listaProdotti[prodotto].idProdotto).val();
+		var prezzo = parseFloat($("#price_"+listaProdotti[prodotto].idProdotto).html());
+		
+		console.log(typeof qta);
+		console.log(parseInt(qta));
+		
+		console.log(typeof prezzo);
+		console.log(typeof parseFloat(prezzo));
+		//console.log(parseInt(qta));
+		//console.log(typeof parseInt(qta));
+		
+		prezzoTotale += (qta * prezzo);
+		//prezzoTotale += prezzo;
+	});
+	
+	//console.log(2*2.5);
+	
+	console.log(prezzoTotale);
+});
+
 
 function aggiungiCarrello(id, prezzo, thiss){
 	
@@ -75,8 +103,6 @@ function sendCart(thiss){
 		}
 	});	
 }
-
-
 
 function loadCart(){
 	listaProdotti = JSON.parse(sessionStorage.getItem("shoppingCart"));

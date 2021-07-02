@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import ecommerce.cart.service.*;
+import ecommerce.prodotto.dao.ProdottoDaoImpl;
 import ecommerce.prodotto.model.ProdottoBean;
 import ecommerce.user.model.IndirizzoBean;
 
@@ -72,6 +73,7 @@ public class CartServlet extends HttpServlet {
 			//System.out.println(lista);
 			response.setContentType("application/json");
 			session.setAttribute("lista", lista);
+			
 			mapper.writeValue(response.getOutputStream(), true);
 		}else {
 			mapper.writeValue(response.getOutputStream(), false);

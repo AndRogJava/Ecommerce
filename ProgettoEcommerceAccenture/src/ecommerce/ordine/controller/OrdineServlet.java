@@ -4,6 +4,7 @@ import ecommerce.user.model.IndirizzoBean;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import ecommerce.ordine.service.*;
+import ecommerce.prodotto.model.ProdottoBean;
+import ecommerce.prodotto.service.ProdottoService;
 import ecommerce.exception.*;
 import ecommerce.ordine.model.*;
 import javax.servlet.RequestDispatcher;
@@ -46,6 +49,15 @@ public class OrdineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		OrdineService ordineService = new OrdineService();
+		String user = request.getParameter("user");
+		System.out.println(user);
+		ArrayList<OrdineBean> lista = ordineService.getAllOrdiniByUser(user);
+
+		ObjectMapper mapper = new ObjectMapper();
+		response.setContentType("application/json");
+		mapper.writeValue(response.getOutputStream(), lista);
+		
 		/*OrdineService os = new OrdineService();
 		
 		HashMap<Integer,ArrayList<DettaglioBean>> mappaOrdine = os.getAllDettaglio();

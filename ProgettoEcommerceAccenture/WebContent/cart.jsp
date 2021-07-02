@@ -30,8 +30,8 @@
     	<h1 class="text-center"><span class="title">Carrello</span></h1>
 		<div class="col-md-8 hero-feature">
 			<c:forEach var="entry" items="${lista}">
-				<c:forEach var="prodotto" items="${entry.value}">
-					<div class="card cardProduct">
+				<c:forEach var="prodotto" items="${entry.value}">			
+					<div class="card cardProduct" id="cardProduct_${prodotto.idProdotto}">
 						<div class="row no-gutters">
 					    	<div class="col-md-4">
 					    		<img src="${prodotto.url}" class="card-img img-responsive" alt="..." width=100 height=100>
@@ -39,7 +39,11 @@
 						    <div class="col-md-8">
 						    	<div class="card-body">
 						        	<h3 class="card-title" style="display: inline">${prodotto.nome}</h3>
-						        	<h2 style="display: inline; float:right; margin-right:10px">${prodotto.prezzo}€</h2>
+						        	<div style="float:right; margin-right:10px">
+    									<h2 style="display: inline" id="price_${prodotto.idProdotto}">${prodotto.prezzo}</h2>
+						        		<h3 style="display: inline">€</h3>
+						        	</div>
+
 						        	<p class="card-text" style="color:#707070">${prodotto.descrizione}</p>
 						        	
 						        	<div class="input-group">
@@ -48,7 +52,7 @@
 							                	<span class="glyphicon glyphicon-minus"></span>
 							                </button>
 							            </span>    
-							            <input type="text" name="" value="<c:out value="${prodotto.quantitaDisponibile}"/>" class="form-control input-number input-qty">
+							            <input type="text" name="" id="qta_${prodotto.idProdotto}" value="<c:out value="${prodotto.quantitaDisponibile}"/>" class="form-control input-number input-qty">
 							            <span class="input-group-btn">
 							            	<button type="button" class="btn btn-default btn-number" onclick="addQuantity(${prodotto.idProdotto},this)">
 							                	<span class="glyphicon glyphicon-plus"></span>
@@ -65,9 +69,17 @@
 			</c:forEach>
     	</div>
     	
-    	<div class="col-md-4 cardAddress text-center" style="background-color: #dafaff">
-    		<h3 class=""><span class="title">Indirizzo di spedizione</span></h3>
-    		<div class="orderAddress">
+    	<div class="col-md-4">
+		    <div class="cardPrice">
+		    	<h3 class=""><span class="title">Prezzo totale</span></h3>
+				<div class="priceContainer text-center"><h3>180.99 Euro</h3></div>
+				<p>Applica coupon:</p>
+				<input type="text" placeholder="Coupon" id="coupon" class="form-control" style="display:inline-block">
+				<button class="btn btn-primary" style="display:inline-block">Applica</button>
+			</div>
+    	
+    		<div class="orderAddress cardAddress">
+    			<h3 class=""><span class="title">Indirizzo di spedizione</span></h3>
 				<c:forEach var="entry" items="${lista}">
 					<b>L'ordine sarà spedito presso:</b>
 					<p>
@@ -99,7 +111,6 @@
     <div class="text-center">
     	<div class="btn-group btns-cart">
         	<button type="button"  onclick="location.href='index.jsp'" class="btn btn-primary"><i class="fa fa-arrow-circle-left" style="margin-right:5px"></i>Continua shopping</button>
-          	<button type="button" class="btn btn-primary">Aggiorna carrello</button>
           	<button type="button" class="btn btn-primary" onclick="checkout()">Checkout<i class="fa fa-arrow-circle-right" style="margin-left:5px"></i></button>
       	</div>
     </div>

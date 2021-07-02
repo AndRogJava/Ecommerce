@@ -11,6 +11,7 @@ public boolean deleteOrdine(int idOrdine);
 public boolean updateOrdine(OrdineBean ordine);
 public OrdineBean getOrdineById(int idOrdine);
 public ArrayList<OrdineBean> getAllOrdini();
+public ArrayList<OrdineBean> getAllOrdiniByUser(String user);
 
 
 	
