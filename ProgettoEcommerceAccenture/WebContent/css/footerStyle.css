@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+
+.containerFooter {
+	color: black;
+	background-image: linear-gradient(to right,  #404861, #858080 );
+	font-family: 'Roboto', sans-serif;
+	display:inline-block;
+	width: 100%;
+}
+
+.sectionLeft {
+	width: 200px;
+	float:left;
+}
+
+.voice {
+	color:white;
+}
+
+.sectionRight {
+	width: 200px;
+	float: right;
+}
+
+a {
+	color: white;	
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+h4 {
+	color: #c9c9c9;
+}
+
+.link {
+	border-left-style: solid;
+	border-left-color:#06D4B9;
+	border-left-width: 3px;
+	cursor: pointer;
+	padding-left: 5px;
+	margin: 3px;
+	background-color: rgba(0,0,0,0.2);
+}
+
+.link:hover {
+	border-left-style: solid;
+	border-left-color: white;
+	border-left-width: 3px;
+	cursor: pointer;
+	padding-left: 5px;
+	margin: 3px;
+	background-color: #06D4B9;
+}
+
+hr {
+	border-color: #06D4B9;
+}
+
+
+
+
+

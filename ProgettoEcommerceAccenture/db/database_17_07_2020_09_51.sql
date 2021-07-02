@@ -1,3 +1,4 @@
+DROP TABLE COUPON;
 DROP TABLE ORDINESTORICO;
 DROP TABLE DETTAGLIO2;
 DROP TABLE UTENTEORDINE;
@@ -13,6 +14,7 @@ DROP SEQUENCE PRODOTTO_SEQ;
 DROP SEQUENCE CATEGORIA_SEQ;
 DROP SEQUENCE ORDINE_SEQ;
 DROP SEQUENCE DETTAGLIO_SEQ;
+DROP SEQUENCE COUPON_SEQ;
 
 ---------------------TABELLE-------------------
 
@@ -104,6 +106,16 @@ CREATE TABLE ORDINESTORICO(
     CONSTRAINT fk_sto_user FOREIGN KEY(username) REFERENCES UTENTE(username) ON DELETE CASCADE
 );
 
+CREATE TABLE COUPON(
+    id_coupon INT NOT NULL,
+    username VARCHAR2(30) NOT NULL,
+    importo NUMBER(8,2) NOT NULL check (importo in (5, 10, 20)),
+    data_emissione DATE DEFAULT SYSDATE,
+    data_scadenza DATE DEFAULT (SYSDATE + 20),
+    utilizzato char(1) check (utilizzato in ( 'Y', 'N' )),
+    CONSTRAINT PK_COUP PRIMARY KEY(id_coupon, username),
+    CONSTRAINT FK_COUP_US FOREIGN KEY(username) REFERENCES UTENTE(username) ON DELETE CASCADE
+);
 
 ---------------------SEQUENZE---------------------
 CREATE SEQUENCE indirizzo_seq
@@ -134,6 +146,12 @@ NOMAXVALUE;
 CREATE SEQUENCE DETTAGLIO_SEQ
 MINVALUE 0
 START WITH 8
+INCREMENT BY 1
+NOMAXVALUE;
+
+CREATE SEQUENCE COUPON_SEQ
+MINVALUE 0
+START WITH 10
 INCREMENT BY 1
 NOMAXVALUE;
 
@@ -198,6 +216,18 @@ BEGIN
     DELETE FROM DETTAGLIO2;
     DELETE FROM UTENTEORDINE;
 END;
+/
+
+create or replace trigger GENERA_COUPON  
+   before insert on COUPON
+   for each row 
+begin  
+   if inserting then 
+      if :NEW.ID_COUPON is null then 
+         select COUPON_SEQ.nextval into :NEW.ID_COUPON from dual; 
+      end if; 
+   end if; 
+end;
 /
 
 ---------------------INSERIMENTO VALORI TEST--------------
@@ -297,5 +327,11 @@ INSERT INTO DETTAGLIO VALUES(4,2,7,1,1.25);
 INSERT INTO DETTAGLIO VALUES(5,3,1,4,25.88);
 INSERT INTO DETTAGLIO VALUES(6,3,17,1,10.70);
 INSERT INTO DETTAGLIO VALUES(7,4,6,9,65.50);
+
+INSERT INTO COUPON(username, importo, utilizzato) VALUES('Utente1', 10, 'Y');
+INSERT INTO COUPON(username, importo, utilizzato) VALUES('Utente2', 5, 'N');
+INSERT INTO COUPON(username, importo, utilizzato) VALUES('Utente3', 20, 'N');
+INSERT INTO COUPON(username, importo, utilizzato) VALUES('Utente2', 5, 'Y');
+INSERT INTO COUPON(username, importo, utilizzato) VALUES('Utente1', 10, 'N');
 
 COMMIT;

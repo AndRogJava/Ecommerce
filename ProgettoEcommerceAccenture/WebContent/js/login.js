@@ -26,9 +26,9 @@ function userVerify() {
 		  user_error.innerHTML = "Username è obbligatorio";
 		  username.focus();
 		  return false;
-	  }else if(username.value.length < 3){
+	  }else if(username.value.length < 5){
 		  username.style.border = "1px solid red";
-		  user_error.innerHTML = "Username deve avere almeno 3 caratteri";
+		  user_error.innerHTML = "Username deve avere almeno 6 caratteri";
 		  username.focus();
 		  return false;
 	  }else{
@@ -60,9 +60,9 @@ function passVerify() {
 
 function verify(){
 	console.log("Sono in verify() javascript");
-	if(username.value.length < 3){
+	if(username.value.length < 5){
 		  username.style.border = "1px solid red";
-		  document.getElementById("userError").innerHTML = "Username deve avere almeno 3 caratteri";
+		  document.getElementById("userError").innerHTML = "Username deve avere almeno 6 caratteri";
 		  username.focus();
 		  return false;
 	  }else{

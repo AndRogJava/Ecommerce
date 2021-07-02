@@ -1,0 +1,92 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+ ul1 {
+   position: static;
+   display: inline-flex;
+   transform: rotate(0deg) skew(-20deg);
+   transform-style: preserve-3d;
+}
+ul1 li1 {
+  position: sticky;
+  list-style: none;
+  width: 30px;
+  height: 30px;
+  margin: 0px 5px;
+}
+ul1 li1:before{
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -5px;
+  width: 100%;
+  height: 10px;
+  background: #2a2a2a;
+  transform-origin: top;
+  transform: skewX(-41deg);
+}
+ul1 li1:after{
+  content: '';
+  position: absolute;
+  top:5px;
+  left: -9px;
+  width: 9px;
+  height: 100%;
+  background: #2a2a2a;
+  trnasform-origin: right;
+  transform: skewY(-49deg);
+}
+ul1 li1 span{
+  position: absolute;
+  top: 0;
+  lef: 0;
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  background: #2a2a2a;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px !important;
+  transition: 1s ease-out;
+}
+ul1 li1:hover span {
+  z-index: 1000;
+  transition: 0.3s;
+  color: #fff;
+  box-shadw: -1px 1px 1px rgba(0, 0, 0, .5);
+}
+ul1 li1:hover span:nth-child(5){
+  transform: translate(8px, -8px);
+  opacity: 1;
+}
+ul1 li1:hover span:nth-child(4){
+  transform: translate(6px, -6px);
+  opacity: .8;
+}
+ul1 li1:hover span:nth-child(3){
+  transform: translate(4px, -4px);
+  opacity: .6;
+}
+ul1 li1:hover span:nth-child(2){
+  transform: translate(2px, -2px);
+  opacity: .4;
+}ul1 li1:hover span:nth-child(1){
+  transform: translate(0px, 0px);
+  opacity: .2;
+}
+ul1 li1:nth-child(1):hover span{
+  background: #3B5998 !important;
+}
+ul1 li1:nth-child(2):hover span{
+  background: #1DA1F2 !important;
+}
+ul1 li1:nth-child(3):hover span{
+  background: #cd486b !important;
+}
+ul1 li1:nth-child(4):hover span{
+  background: #0077b5 !important;
+}
