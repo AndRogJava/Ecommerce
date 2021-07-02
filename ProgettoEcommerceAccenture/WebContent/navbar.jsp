@@ -52,7 +52,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/navBar.js"></script>
 
-<nav class="navbar navbar-dark" style="background-color: #00ffc4ad;">
+<nav class="navbar navbar-dark" style="background-color: #06D4B9;">
   <div class="container-fluid">
     <div class="navbar-header">
       
@@ -68,15 +68,19 @@
    		<li><a href="#"> <span class="fa fa-twitter"></span></a> </li>
    		<li><a href="#"><span class="fa fa-instagram"></span></a></li>
    		<li><a href="#"><span class="fa fa-linkedin"></span> </a></li>
-        <li id="l2" style="margin-left: 100px;"><a id="a2" href="Prodotto" style="color: black">Prodotti</a></li>
-        <li id="l3"><a id="a3" href="offerte.jsp" style="color: black">Offerte</a></li>
-        <li id="l4"><a id="a4" href="categorie.jsp" style="color: black">Categorie</a></li>
-        <li id="l5"><a id="a5" href="contatti.jsp" style="color: black">Contatti</a></li>
+   		
+   			<div class="conainer"style="display: inline-block; text-align: center; position: absolute; left:42%; margin-top:14px;">
+		       <div style="display: inline-block;"><li id="l2" ><a id="a2" href="Prodotto" style="color: black">Prodotti</a></li></div>
+		       <div style="display: inline-block; margin-left:10px;"><li id="l3"><a id="a3" href="offerte.jsp" style="color: black">Offerte</a></li></div>
+		       <div style="display: inline-block;  margin-left:10px;"><li id="l4"><a id="a4" href="categorie.jsp" style="color: black">Categorie</a></li></div>
+		       <div style="display: inline-block;  margin-left:10px;"><li id="l5"><a id="a5" href="contatti.jsp" style="color: black">Contatti</a></li></div>
+	        </div>
+      	
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
       <%if(user != null){ %>
-      	<li><a href="#" style="color: black"><span class="glyphicon glyphicon-user" style="color: black; margin-left:10px"></span>Benvenuto <c:out value="${user}" /></a></li>
+      	<li><a href="areaPersonale.jsp" style="color: black"><span class="glyphicon glyphicon-user" style="color: black; margin-left:10px"></span>Benvenuto <c:out value="${user}" /></a></li>
       	<li class="cart"><a onclick="sendCart(this)" style="color: black"><span class="glyphicon glyphicon-shopping-cart" style="color: black; margin-left:10px"></span>Carrello</a></li>
       	<li><a href="LoginServlet" style="color: black"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       <%}else{ %>

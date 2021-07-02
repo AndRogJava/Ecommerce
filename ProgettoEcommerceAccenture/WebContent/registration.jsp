@@ -14,6 +14,9 @@
   
 </head>
 <body  style="background-color:#E3981C">
+
+<jsp:include page="navbar.jsp" />
+
 <div class="wrapper">
   <div class="title">
     Registration Form
@@ -87,6 +90,9 @@
         <p align="left"> <c:out value="${msg}" /> </p>
   </div>
 </div>
+
+<jsp:include page="footer.jsp" />
+
 </body>
 <script src="js/registration.js"></script>
 </html>
