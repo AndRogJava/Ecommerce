@@ -10,15 +10,22 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Categorie</title>
 </head>
 <body>
 <jsp:include page="navbar.jsp" />
 
-<h1>TODO Sezione Categorie</h1>
+<h1 style="text-align: center; color: black; font-weight: 700; margin-top: 3rem;">CATEGORIE</h1>
+<div class="container my_3">    
+  <div id="row" class="row">
+  
+	</div>
+</div>
 
 <jsp:include page="footer.jsp" />
+<script src= "js/index.js"></script>
 </body>
 </html>
