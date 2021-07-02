@@ -205,11 +205,32 @@ public class OrdineDaoImpl implements IOrdineDao {
 
 	@Override
 	public ArrayList<OrdineBean> getAllOrdiniByUser(String user) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from ordine where utente = ? order by data_ordine";
+
+		ArrayList<OrdineBean> listaOrdini = new ArrayList<OrdineBean>();
+		conn = ConnectionFactory.getIstance().getConnection();
+
+		try {
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, user);
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				OrdineBean ordineAppoggio=new OrdineBean();
+				ordineAppoggio.setIdOrdine(resultSet.getInt(1));
+				ordineAppoggio.setDataOrdine(resultSet.getDate(2).toLocalDate());
+				ordineAppoggio.setPrezzoTotale(resultSet.getDouble(3));
+				ordineAppoggio.setUtente(resultSet.getString(4));
+				ordineAppoggio.setIndirizzo(resultSet.getInt(5));
+				listaOrdini.add(ordineAppoggio);
+			}
+		} catch (SQLException e) {
+			//logger.error("Errore nel database", e);
+			e.printStackTrace();
+		}catch(Exception e) {
+			//logger.error("Errore",e);
+			e.printStackTrace();
+		}
+		return listaOrdini;
 	}
-
-	
-
-
 }
