@@ -231,9 +231,9 @@ end;
 /
 
 ---------------------INSERIMENTO VALORI TEST--------------
-INSERT INTO UTENTE VALUES('Utente1','PasswordUtente1','Nome1','Cognome1','15-LUG-2020');
-INSERT INTO UTENTE VALUES('Utente2','PasswordUtente2','Nome2','Cognome2','16-LUG-2020');
-INSERT INTO UTENTE VALUES('Utente3','PasswordUtente3','Nome3','Cognome3','17-LUG-2020');
+INSERT INTO UTENTE VALUES('Utente1','PasswordUtente1$','Nome1','Cognome1','15-LUG-2020');
+INSERT INTO UTENTE VALUES('Utente2','PasswordUtente2$','Nome2','Cognome2','16-LUG-2020');
+INSERT INTO UTENTE VALUES('Utente3','PasswordUtente3$','Nome3','Cognome3','17-LUG-2020');
 
 
 INSERT INTO INDIRIZZO VALUES(indirizzo_seq.nextval,'via1',1,'citta1',11111,'Utente1','N');
