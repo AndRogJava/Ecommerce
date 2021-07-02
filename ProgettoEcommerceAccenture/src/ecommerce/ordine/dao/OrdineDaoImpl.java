@@ -203,6 +203,12 @@ public class OrdineDaoImpl implements IOrdineDao {
 		return listaOrdini;
 	}
 
+	@Override
+	public ArrayList<OrdineBean> getAllOrdiniByUser(String user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 
